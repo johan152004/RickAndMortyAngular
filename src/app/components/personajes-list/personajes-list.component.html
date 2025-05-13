@@ -1,0 +1,109 @@
+<!-- personajes-list.component.html -->
+<div class="rick-morty-theme">
+    <div class="portal-bg">
+      <div class="container py-5">
+        <!-- Vista de Lista -->
+        <div *ngIf="!personajeSelect">
+          <h1 class="text-center mb-5 neon-text">Rick and Morty Universe</h1>
+          
+          <div class="row mb-4">
+            <div class="col-md-6 mb-2 mb-md-0">
+              <div class="search-container">
+                <input
+                  [(ngModel)]="searchName"
+                  placeholder="Buscar personaje en el multiverso..."
+                  class="form-control search-input"
+                  (keyup.enter)="buscar()"
+                >
+              </div>
+            </div>
+            <div class="col-md-6">
+              <select
+                [(ngModel)]="selectedStatus"
+                class="form-select status-select"
+                (change)="buscar()"
+              >
+                <option value="">Todas las dimensiones</option>
+                <option *ngFor="let status of statusOptions" [value]="status">
+                  {{status}}
+                </option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row g-4">
+            <div 
+              *ngFor="let personaje of personajesList" 
+              class="col-12 col-md-6 col-lg-4"
+            >
+              <div 
+                class="card character-card h-100 shadow-lg"
+                (click)="verDetalle(personaje.id)"
+              >
+                <div class="portal-frame">
+                  <img [src]="personaje.image" [alt]="personaje.name" class="card-img-top character-img">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-center portal-text">{{personaje.name}}</h5>
+                  <p class="card-text">
+                    <span class="badge status-badge" [ngClass]="personaje.status.toLowerCase()">
+                      {{personaje.status}}
+                    </span>
+                    <span class="species-text">{{personaje.species}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Vista de Detalle -->
+        <div *ngIf="personajeSelect" class="mx-auto" style="max-width: 700px;">
+          <div class="card detail-card shadow-lg">
+            <div class="portal-frame-large">
+              <img [src]="personajeSelect.image" [alt]="personajeSelect.name" class="card-img-top">
+            </div>
+  
+            <div class="card-body">
+              <h1 class="card-title text-center portal-text">{{personajeSelect.name}}</h1>
+  
+              <div class="row my-4">
+                <div class="col-6">
+                  <h6 class="detail-label">Especie</h6>
+                  <p class="detail-value">{{personajeSelect.species}}</p>
+                </div>
+                <div class="col-6">
+                  <h6 class="detail-label">Estado</h6>
+                  <p class="detail-value">
+                    <span class="badge status-badge" [ngClass]="personajeSelect.status.toLowerCase()">
+                      {{personajeSelect.status}}
+                    </span>
+                  </p>
+                </div>
+                <div class="col-12">
+                  <h6 class="detail-label">Ubicación</h6>
+                  <p class="detail-value location-text">{{personajeSelect.location.name}}</p>
+                </div>
+              </div>
+  
+              <div>
+                <h6 class="detail-label mb-3">Episodios</h6>
+                <div class="episodes-container">
+                  <div class="episode-badge" *ngFor="let episode of personajeSelect.episode">
+                    Ep. {{episode.split('/').pop()}}
+                  </div>
+                </div>
+              </div>
+  
+              <div class="text-center mt-4">
+                <button (click)="volverALista()" 
+                        class="btn btn-portal">
+                  Volver al Multiverso
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

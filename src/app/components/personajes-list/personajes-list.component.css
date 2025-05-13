@@ -1,0 +1,304 @@
+.rick-morty-theme {
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    color: #fff;
+  }
+  
+  .portal-bg {
+    background: radial-gradient(circle at center, 
+                rgba(0, 181, 204, 0.2) 0%,
+                rgba(26, 26, 26, 0.95) 70%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .portal-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 30% 20%, rgba(0, 181, 204, 0.1) 0%, transparent 25%),
+      radial-gradient(circle at 70% 60%, rgba(132, 204, 22, 0.1) 0%, transparent 25%);
+    animation: portalPulse 8s infinite alternate;
+  }
+  
+  @keyframes portalPulse {
+    0% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0.8;
+      transform: scale(1.2);
+    }
+  }
+  
+  .neon-text {
+    color: #00b5cc;
+    text-shadow: 0 0 10px #00b5cc, 0 0 20px #00b5cc, 0 0 30px #00b5cc;
+    font-family: Arial, sans-serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .search-input, .status-select {
+    background-color: rgba(0, 181, 204, 0.1);
+    border: 2px solid #00b5cc;
+    color: yellowgreen;
+    border-radius: 10px;
+    padding: 12px;
+  }
+  
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .search-input:focus, .status-select:focus {
+    box-shadow: 0 0 15px rgba(0, 181, 204, 0.3);
+    border-color: #00b5cc;
+    outline: none;
+  }
+  
+  .character-card {
+    background: rgba(26, 26, 26, 0.9);
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .character-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00b5cc, #84cc16);
+    z-index: -1;
+    border-radius: 10px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+  
+  .character-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    cursor: pointer;
+  }
+  
+  .character-card:hover::before {
+    opacity: 1;
+  }
+  
+  .portal-frame {
+    position: relative;
+    overflow: hidden;
+    max-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .portal-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+                rgba(0, 181, 204, 0.2),
+                rgba(132, 204, 22, 0.2));
+    z-index: 1;
+  }
+  
+  .character-img {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .character-card:hover .character-img {
+    transform: scale(1.1);
+  }
+  
+  .portal-text {
+    color: #00b5cc;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 181, 204, 0.5);
+  }
+  
+  .status-badge {
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .alive {
+    background-color: #84cc16;
+    color: #000;
+  }
+  
+  .dead {
+    background-color: #dc2626;
+    color: #fff;
+  }
+  
+  .unknown {
+    background-color: #6b7280;
+    color: #fff;
+  }
+  
+  .species-text {
+    margin-left: 10px;
+    color: #d1d5db;
+  }
+  
+  .detail-card {
+    background: rgba(26, 26, 26, 0.95);
+    border: none;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .detail-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00b5cc, #84cc16);
+    z-index: -1;
+    border-radius: 15px;
+  }
+  
+  .portal-frame-large {
+    position: relative;
+    overflow: hidden;
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .portal-frame-large::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+                rgba(0, 181, 204, 0.3),
+                rgba(132, 204, 22, 0.3));
+    z-index: 1;
+  }
+
+  .portal-frame-large img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center top;
+  }
+  
+  .detail-label {
+    color: #00b5cc;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(0, 181, 204, 0.5);
+  }
+  
+  .detail-value {
+    color: #d1d5db;
+    font-size: 1.1rem;
+  }
+  
+  .location-text {
+    color: #84cc16;
+    text-shadow: 0 0 5px rgba(132, 204, 22, 0.5);
+  }
+  
+  .episodes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .episode-badge {
+    background-color: rgba(0, 181, 204, 0.2);
+    border: 1px solid #00b5cc;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .episode-badge:hover {
+    background-color: rgba(0, 181, 204, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(0, 181, 204, 0.3);
+  }
+  
+  .btn-portal {
+    background: linear-gradient(45deg, #00b5cc, #84cc16);
+    border: none;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-portal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0));
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+  
+  .btn-portal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 181, 204, 0.7);
+  }
+  
+  .btn-portal:hover::before {
+    transform: translateX(100%);
+  }
+  
+  @media (max-width: 768px) {
+    .neon-text {
+      font-size: 2.5rem;
+    }
+    
+    .portal-bg::before {
+      animation: none;
+    }
+    
+    .search-input, .status-select {
+      padding: 8px;
+    }
+  }
